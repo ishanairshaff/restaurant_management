@@ -1,0 +1,30 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurant Lists</title>
+</head>
+<body>
+<table border="=1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Rating</th>
+        <th>Cuisine</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="restaurant : ${listRestaurants}">
+        <td th:text="${restaurant.id}"></td>
+        <td th:text="${restaurant.name}"></td>
+        <td th:text="${restaurant.location}"></td>
+        <td th:text="${restaurant.rating}"></td>
+        <td th:text="${restaurant.cuisine}"></td>
+        <td>
+            <a th:href="@{'/edit/' + ${restaurant.id}}">Edit</a>
+            <a th:href="@{'/delete/' + ${restaurant.id}}">Delete</a>
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>
