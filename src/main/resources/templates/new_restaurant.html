@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Restaurant</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
+        h2 { color: #333; }
+        .form-container { background: white; padding: 30px; border-radius: 8px;
+            width: 400px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        table { width: 100%; }
+        td { padding: 8px 6px; }
+        input[type="text"], input[type="number"] {
+            width: 100%; padding: 8px; border: 1px solid #ccc;
+            border-radius: 4px; box-sizing: border-box;
+        }
+        .btn-save {
+            background-color: #4CAF50; color: white;
+            padding: 8px 20px; border: none;
+            border-radius: 4px; cursor: pointer;
+        }
+        .btn-save:hover { background-color: #388e3c; }
+        .btn-cancel { color: #f44336; text-decoration: none; margin-left: 12px; }
+    </style>
+</head>
+<body>
+
+<h2> Add New Restaurant</h2>
+
+<div class="form-container">
+<!--    Posts to /save → saveRestaurant()-->
+    <form action="#" th:action="@{/save}" th:object="${restaurant}" method="post">
+        <table>
+            <tr>
+                <td><label>Name:</label></td>
+                <td><input type="text" th:field="*{name}" placeholder="Restaurant name" required /></td>
+            </tr>
+            <tr>
+                <td><label>Location:</label></td>
+                <td><input type="text" th:field="*{location}" placeholder="City, Country" required /></td>
+            </tr>
+            <tr>
+                <td><label>Rating:</label></td>
+                <td><input type="number" step="0.1" min="0" max="5"
+                           th:field="*{rating}" placeholder="0.0 - 5.0" required /></td>
+            </tr>
+            <tr>
+                <td><label>Cuisine:</label></td>
+                <td><input type="text" th:field="*{cuisine}" placeholder="e.g. Italian, Chinese" required /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center; padding-top:16px;">
+                    <button class="btn-save" type="submit"> Save Restaurant</button>
+                    <a class="btn-cancel" href="/"> Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Restaurant</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
+        h2 { color: #333; }
+        .form-container { background: white; padding: 30px; border-radius: 8px;
+            width: 400px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        table { width: 100%; }
+        td { padding: 8px 6px; }
+        input[type="text"], input[type="number"] {
+            width: 100%; padding: 8px; border: 1px solid #ccc;
+            border-radius: 4px; box-sizing: border-box;
+        }
+        .btn-update {
+            background-color: #2196F3; color: white;
+            padding: 8px 20px; border: none;
+            border-radius: 4px; cursor: pointer;
+        }
+        .btn-update:hover { background-color: #1565c0; }
+        .btn-cancel { color: #f44336; text-decoration: none; margin-left: 12px; }
+    </style>
+</head>
+<body>
+
+<h2> Edit Restaurant</h2>
+
+<div class="form-container">
+    <!--  Posts to /update → updateRestaurant() -->
+    <form action="#" th:action="@{/update}" th:object="${restaurant}" method="post">
+
+        <!--  Hidden ID field — needed to update correct record in DB -->
+        <input type="hidden" th:field="*{id}" />
+
+        <table>
+            <tr>
+                <td><label>Name:</label></td>
+                <td><input type="text" th:field="*{name}" required /></td>
+            </tr>
+            <tr>
+                <td><label>Location:</label></td>
+                <td><input type="text" th:field="*{location}" required /></td>
+            </tr>
+            <tr>
+                <td><label>Rating:</label></td>
+                <td><input type="number" step="0.1" min="0" max="5" th:field="*{rating}" required /></td>
+            </tr>
+            <tr>
+                <td><label>Cuisine:</label></td>
+                <td><input type="text" th:field="*{cuisine}" required /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center; padding-top:16px;">
+                    <button class="btn-update" type="submit"> Update Restaurant</button>
+                    <a class="btn-cancel" href="/">✖ Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -37,5 +38,26 @@ public class RestaurantController {
         restaurantService.saveRestaurant(restaurant);
         return "redirect:/";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable int id, Model model) {
+        Restaurant restaurant = restaurantService.getRestaurantById(id);
+        model.addAttribute("restaurant", restaurant);
+        return "edit_restaurant";
+    }
+
+    @PostMapping("/update")
+    public String updateRestaurant(@ModelAttribute("restaurant") Restaurant restaurant) {
+        restaurantService.saveRestaurant(restaurant);
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteRestaurant(@PathVariable int id) {
+        restaurantService.deleteRestaurantById(id);
+        return "redirect:/";
+    }
+
 
 }
