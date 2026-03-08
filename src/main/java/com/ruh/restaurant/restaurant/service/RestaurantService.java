@@ -23,6 +23,7 @@ public class RestaurantService {
     public void deleteRestaurantById(int id) {
         restaurantRepository.deleteById(id);
     }
+
     public void saveRestaurant(Restaurant restaurant) {
         restaurantRepository.save(restaurant);
     }

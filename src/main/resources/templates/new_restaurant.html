@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Add New Restaurant</title>
@@ -38,9 +39,9 @@
                 <td><input type="text" th:field="*{location}" placeholder="City, Country" required /></td>
             </tr>
             <tr>
-                <td><label>Rating:</label></td>
+                <td><label>Rate:</label></td>
                 <td><input type="number" step="0.1" min="0" max="5"
-                           th:field="*{rating}" placeholder="0.0 - 5.0" required /></td>
+                           th:field="*{rate}" placeholder="0.0 - 5.0" required /></td>
             </tr>
             <tr>
                 <td><label>Cuisine:</label></td>

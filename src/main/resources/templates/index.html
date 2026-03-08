@@ -46,7 +46,7 @@
 </head>
 <body>
 
-<h2>🍽Restaurant List</h2>
+<h2>Restaurant List</h2>
 
 <!-- Add New Restaurant Button -->
 <a class="btn-add" href="/new"> Add New Restaurant</a>
@@ -56,7 +56,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Location</th>
-        <th>Rating</th>
+        <th>Rate</th>
         <th>Cuisine</th>
         <th>Action</th>
     </tr>
@@ -64,7 +64,7 @@
         <td th:text="${restaurant.id}"></td>
         <td th:text="${restaurant.name}"></td>
         <td th:text="${restaurant.location}"></td>
-        <td th:text="${restaurant.rating}"></td>
+        <td th:text="${restaurant.rate}"></td>
         <td th:text="${restaurant.cuisine}"></td>
         <td>
             <!-- Triggers showEditForm route -->

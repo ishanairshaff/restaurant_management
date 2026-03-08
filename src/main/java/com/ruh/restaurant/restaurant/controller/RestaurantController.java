@@ -10,24 +10,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
 
-
+    // ── Step 1: Load ALL restaurants from DB freshly ────────────
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        List<Restaurant> restaurants = restaurantService.getAllRestaurants();
-        model.addAttribute("listRestaurants", restaurants);
+        model.addAttribute("listRestaurants", restaurantService.getAllRestaurants());
         return "index";
     }
 
+
     @GetMapping("/new")
-    public String showNewRestaurantForm(Model model) {
+    public String showNewForm(Model model) {
         model.addAttribute("restaurant", new Restaurant());
         return "new_restaurant";
     }
@@ -39,12 +37,13 @@ public class RestaurantController {
         return "redirect:/";
     }
 
+
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable int id, Model model) {
-        Restaurant restaurant = restaurantService.getRestaurantById(id);
-        model.addAttribute("restaurant", restaurant);
+        model.addAttribute("restaurant", restaurantService.getRestaurantById(id));
         return "edit_restaurant";
     }
+
 
     @PostMapping("/update")
     public String updateRestaurant(@ModelAttribute("restaurant") Restaurant restaurant) {
@@ -58,6 +57,4 @@ public class RestaurantController {
         restaurantService.deleteRestaurantById(id);
         return "redirect:/";
     }
-
-
 }
